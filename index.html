@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juli Kumari | Product & UI/UX Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4.5rem 0;
+    }
+    header {
+      margin-bottom: 4rem;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(99, 102, 241, 0.12);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    p.lead {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .header-links a:hover {
+      border-color: var(--accent);
+      color: #818cf8;
+    }
+    section {
+      margin-bottom: 5rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.01em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+    .card-meta {
+      font-size: 0.8rem;
+      color: #818cf8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.55;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tag {
+      font-size: 0.78rem;
+      background: #1f2937;
+      color: #cbd5e1;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .skill-block h4 {
+      font-size: 1rem;
+      color: #e2e8f0;
+      margin-bottom: 1rem;
+    }
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-pill {
+      font-size: 0.85rem;
+      padding: 0.35rem 0.75rem;
+      background: #1e2538;
+      border-radius: 6px;
+      color: #94a3b8;
+    }
+    .contact-card {
+      background: linear-gradient(135deg, #151a2c, #0e1220);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .contact-card h2 {
+      margin-bottom: 0.5rem;
+    }
+    .contact-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background: var(--accent-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="status-badge">
+        <span class="status-dot"></span> Available for Product & UI/UX Design Roles
+      </div>
+      <h1>Juli Kumari</h1>
+      <p class="lead">
+        Product Designer (UI/UX) with 2 years of experience designing scalable web and mobile applications across FinTech, Healthcare, SaaS, Retail, and HRMS. Specialist in enterprise design systems, data-heavy dashboards, and AI-assisted workflows.
+      </p>
+      <div class="header-links">
+        <a href="mailto:juliesky94@gmail.com">Email Me</a>
+        <a href="https://linkedin.com/in/juli-kumari-a64648172" target="_blank">LinkedIn</a>
+        <a href="https://behance.net/julikumari24" target="_blank">Behance</a>
+        <a href="tel:+917483026969">+91 7483026969</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Featured Work & Case Studies</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-meta">Enterprise & Retail</div>
+          <h3>LUX Ecosystem Architecture</h3>
+          <p>Multi-platform design ecosystem encompassing Retail App, CRM, and Warehouse Management System (WMS), streamlining inventory workflows and reducing product discovery time.</p>
+          <div class="tags">
+            <span class="tag">WMS</span>
+            <span class="tag">CRM</span>
+            <span class="tag">Retail Mobile</span>
+            <span class="tag">Design Systems</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-meta">SaaS & FinTech</div>
+          <h3>Data Visualization & Dashboards</h3>
+          <p>Transformed dense datasets into clean, actionable enterprise dashboards across SaaS, FinTech, and HRMS domains to enhance decision-making for leadership teams.</p>
+          <div class="tags">
+            <span class="tag">Information Architecture</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Figma</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-meta">Mobile Apps</div>
+          <h3>Healthcare & Consumer Experience</h3>
+          <p>Designed user-centric mobile applications for Healthcare, Pregnancy Tracking, and Wellness with a focus on WCAG accessibility, intuitive onboarding, and retention.</p>
+          <div class="tags">
+            <span class="tag">iOS / Android</span>
+            <span class="tag">Accessibility (WCAG)</span>
+            <span class="tag">Usability Testing</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-meta">AI & Web Design</div>
+          <h3>Robotics & AI Brand Conversions</h3>
+          <p>Built responsive, high-converting websites for AI/Robotics brands (Simpel.ai, XP Robotics, Simi.ai) by restructuring visual hierarchy and conversion funnels.</p>
+          <div class="tags">
+            <span class="tag">Web Design</span>
+            <span class="tag">Visual Hierarchy</span>
+            <span class="tag">Brand Systems</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills & Core Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-block">
+          <h4>Product & UI Design</h4>
+          <div class="skill-pills">
+            <span class="skill-pill">Design Systems</span>
+            <span class="skill-pill">Component Libraries</span>
+            <span class="skill-pill">Mobile Design (iOS/Android)</span>
+            <span class="skill-pill">Responsive Web</span>
+            <span class="skill-pill">Interactive Prototyping</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>UX Research & Strategy</h4>
+          <div class="skill-pills">
+            <span class="skill-pill">User Interviews</span>
+            <span class="skill-pill">Journey Mapping</span>
+            <span class="skill-pill">User Flows</span>
+            <span class="skill-pill">Information Architecture</span>
+            <span class="skill-pill">Usability Testing</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>AI-Driven Workflows</h4>
+          <div class="skill-pills">
+            <span class="skill-pill">Google Stitch</span>
+            <span class="skill-pill">Emergent</span>
+            <span class="skill-pill">Figma Make</span>
+            <span class="skill-pill">Microsoft Copilot</span>
+            <span class="skill-pill">Rapid Concepting</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Tools & Technologies</h4>
+          <div class="skill-pills">
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">FigJam</span>
+            <span class="skill-pill">Miro</span>
+            <span class="skill-pill">Adobe XD</span>
+            <span class="skill-pill">Framer</span>
+            <span class="skill-pill">Axure RP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-card">
+      <h2>Let's connect</h2>
+      <p>Bangalore, India · Available for full-time Product and UI/UX Design opportunities.</p>
+      <a href="mailto:juliesky94@gmail.com" class="btn">Get in Touch</a>
+    </section>
+  </div>
+</body>
+</html>
