@@ -3,319 +3,1143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juli Kumari | Product & UI/UX Designer</title>
+  <title>Juli Kumari — Product Designer & UI/UX Specialist</title>
+  <meta name="description" content="Portfolio of Juli Kumari, Product Designer specializing in Enterprise Systems, AI workflows, FinTech, and Retail ecosystems." />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0b0f19;
-      --card-bg: #111827;
-      --card-border: #1f2937;
+      --bg: #090d16;
+      --bg-surface: #101626;
+      --bg-card: #141c30;
+      --bg-card-subtle: #19233c;
+      --border-light: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.35);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      
       --accent: #6366f1;
       --accent-hover: #4f46e5;
-      --text: #f9fafb;
-      --text-muted: #9ca3af;
+      --accent-soft: rgba(99, 102, 241, 0.14);
+      --accent-emerald: #10b981;
+      --accent-cyan: #06b6d4;
+      
+      --font-display: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-editorial: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --shadow-hover: 0 20px 40px -10px rgba(99, 102, 241, 0.2);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg);
-      color: var(--text);
+      color: var(--text-main);
+      font-family: var(--font-body);
       line-height: 1.6;
-      padding: 0 1.5rem;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+
     .container {
-      max-width: 960px;
+      width: 100%;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 4.5rem 0;
+      padding: 0 24px;
     }
-    header {
-      margin-bottom: 4rem;
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 0;
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+      transition: padding 0.3s;
     }
-    .status-badge {
-      display: inline-flex;
+    .navbar {
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.85rem;
-      background: rgba(99, 102, 241, 0.12);
-      color: #a5b4fc;
-      border: 1px solid rgba(99, 102, 241, 0.25);
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
+      justify-content: space-between;
     }
-    .status-dot {
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+    .brand-dot {
       width: 8px;
       height: 8px;
-      background: #22c55e;
+      background: var(--accent);
       border-radius: 50%;
     }
-    h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-      letter-spacing: -0.02em;
+    .brand-chip {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-accent);
     }
-    p.lead {
-      font-size: 1.2rem;
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    @media(min-width: 900px) { .nav-links { display: flex; } }
+    .nav-link {
+      font-size: 0.92rem;
+      font-weight: 500;
       color: var(--text-muted);
-      max-width: 720px;
-      margin-bottom: 2rem;
+      text-decoration: none;
+      transition: color 0.2s;
     }
-    .header-links {
+    .nav-link:hover, .nav-link.active { color: var(--text-main); }
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+
+    .btn-resume {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-light);
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-resume:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent);
+    }
+    .btn-primary {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+    }
+
+    /* Hero */
+    .hero-section {
+      padding: 70px 0 100px;
+      position: relative;
+    }
+    .hero-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent-emerald);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media(min-width: 1024px) {
+      .hero-grid { grid-template-columns: 1.25fr 0.95fr; }
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 2.9rem;
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    @media(min-width: 768px) { .hero-title { font-size: 4rem; } }
+    .hero-title .editorial-italic {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-weight: 400;
+      color: #a5b4fc;
+      display: block;
+    }
+    .hero-summary {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+    .hero-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 8px;
+      margin-bottom: 36px;
     }
-    .header-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.95rem;
-      padding: 0.5rem 1rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      transition: all 0.2s ease;
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #c7d2fe;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
     }
-    .header-links a:hover {
-      border-color: var(--accent);
-      color: #818cf8;
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
     }
-    section {
-      margin-bottom: 5rem;
-    }
-    h2 {
-      font-size: 1.6rem;
+    .btn-secondary {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
       font-weight: 600;
-      margin-bottom: 1.75rem;
-      letter-spacing: -0.01em;
+      color: var(--text-main);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      padding: 11px 24px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      transition: all 0.2s;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 1.75rem;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
+    .btn-secondary:hover {
       border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Embedded Hero Canvas Graphic */
+    .hero-visual-card {
+      background: linear-gradient(145deg, #161e33, #0d1322);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .hero-device-top {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .hero-circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .hero-circle.red { background: #ef4444; }
+    .hero-circle.yellow { background: #f59e0b; }
+    .hero-circle.green { background: #10b981; }
+
+    /* Section Global */
+    .section { padding: 90px 0; }
+    .section-header { margin-bottom: 44px; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+    }
+
+    /* Filters */
+    .work-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { color: var(--text-main); border-color: var(--accent); }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* Projects Masonry */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    @media(min-width: 768px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(min-width: 1024px) {
+      .projects-grid { grid-template-columns: repeat(12, 1fr); }
+      .col-span-12 { grid-column: span 12; }
+      .col-span-7 { grid-column: span 7; }
+      .col-span-5 { grid-column: span 5; }
+      .col-span-6 { grid-column: span 6; }
+      .col-span-8 { grid-column: span 8; }
+      .col-span-4 { grid-column: span 4; }
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-hover);
+    }
+    .card-preview-window {
+      background: #0d121f;
+      padding: 24px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+    }
+    .card-body {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
     .card-meta {
-      font-size: 0.8rem;
-      color: #818cf8;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-    }
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.25rem;
-      line-height: 1.55;
-    }
-    .tags {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
     }
-    .tag {
+    .card-num {
+      font-family: var(--font-mono);
       font-size: 0.78rem;
-      background: #1f2937;
-      color: #cbd5e1;
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
+      color: var(--text-subtle);
     }
-    .skills-grid {
+    .card-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #a5b4fc;
+      background: var(--accent-soft);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+    }
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-desc {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+    .card-footer {
+      padding-top: 14px;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Flagship Showcase */
+    .flagship-box {
+      background: linear-gradient(135deg, #10162a, #0b0f1d);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 48px 36px;
+      margin-bottom: 70px;
+    }
+    .flagship-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      margin-bottom: 14px;
+    }
+    .specs-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 28px 0;
     }
-    .skill-block {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-    .skill-block h4 {
-      font-size: 1rem;
-      color: #e2e8f0;
-      margin-bottom: 1rem;
-    }
-    .skill-pills {
+    @media(min-width: 768px) { .specs-row { grid-template-columns: repeat(4, 1fr); } }
+    .spec-item span { display: block; }
+    .spec-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-subtle); }
+    .spec-val { font-size: 0.95rem; font-weight: 700; color: var(--text-main); }
+
+    .modules-cloud {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 10px;
+      margin-top: 16px;
     }
-    .skill-pill {
-      font-size: 0.85rem;
-      padding: 0.35rem 0.75rem;
-      background: #1e2538;
-      border-radius: 6px;
-      color: #94a3b8;
+    .module-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-light);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: #e2e8f0;
     }
-    .contact-card {
-      background: linear-gradient(135deg, #151a2c, #0e1220);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 3rem 2rem;
+
+    /* Experience */
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .exp-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    @media(min-width: 768px) {
+      .exp-header { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+    .exp-company { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; }
+    .exp-role { color: var(--accent); font-weight: 600; }
+    .exp-time { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .exp-bullets li { position: relative; padding-left: 24px; color: var(--text-muted); font-size: 0.95rem; }
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Toolkit */
+    .toolkit-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media(min-width: 768px) { .toolkit-grid { grid-template-columns: repeat(2, 1fr); } }
+    .toolkit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+    .toolkit-card h4 { font-size: 1.15rem; margin-bottom: 14px; }
+    .pills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .toolkit-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-light);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.84rem;
+      color: #cbd5e1;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(5, 8, 15, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s;
+      padding: 20px;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-dialog {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 860px;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 36px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-light);
       text-align: center;
-    }
-    .contact-card h2 {
-      margin-bottom: 0.5rem;
-    }
-    .contact-card p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      padding: 0.85rem 1.75rem;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background 0.2s ease;
-    }
-    .btn:hover {
-      background: var(--accent-hover);
+      color: var(--text-subtle);
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="status-badge">
-        <span class="status-dot"></span> Available for Product & UI/UX Design Roles
+
+  <!-- Sticky Navbar -->
+  <header class="navbar-wrapper">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#home" class="brand-logo">
+          <span>Juli Kumari</span>
+          <span class="brand-dot"></span>
+          <span class="brand-chip">Product Designer</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#lux" class="nav-link">LUX Ecosystem</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#toolkit" class="nav-link">Toolkit</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn-resume" id="openResumeBtn">📄 Resume</button>
+          <a href="#contact" class="btn-primary">Let's Talk →</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="hero-status-pill">
+        <span class="pulse-dot"></span> Currently Product Designer at <strong>Simpel.ai</strong>
       </div>
-      <h1>Juli Kumari</h1>
-      <p class="lead">
-        Product Designer (UI/UX) with 2 years of experience designing scalable web and mobile applications across FinTech, Healthcare, SaaS, Retail, and HRMS. Specialist in enterprise design systems, data-heavy dashboards, and AI-assisted workflows.
-      </p>
-      <div class="header-links">
-        <a href="mailto:juliesky94@gmail.com">Email Me</a>
-        <a href="https://linkedin.com/in/juli-kumari-a64648172" target="_blank">LinkedIn</a>
-        <a href="https://behance.net/julikumari24" target="_blank">Behance</a>
-        <a href="tel:+917483026969">+91 7483026969</a>
-      </div>
-    </header>
 
-    <section>
-      <h2>Featured Work & Case Studies</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="card-meta">Enterprise & Retail</div>
-          <h3>LUX Ecosystem Architecture</h3>
-          <p>Multi-platform design ecosystem encompassing Retail App, CRM, and Warehouse Management System (WMS), streamlining inventory workflows and reducing product discovery time.</p>
-          <div class="tags">
-            <span class="tag">WMS</span>
-            <span class="tag">CRM</span>
-            <span class="tag">Retail Mobile</span>
-            <span class="tag">Design Systems</span>
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">
+            Hi, I'm Juli.
+            <span class="editorial-italic">Designing digital experiences that make complex products feel simple.</span>
+          </h1>
+
+          <p class="hero-summary">
+            Product Designer with 2 years of experience designing scalable web and mobile applications across FinTech, Healthcare, SaaS, Retail, and HRMS. Specialist in enterprise design systems, data-heavy dashboards, and AI workflows.
+          </p>
+
+          <div class="hero-tags">
+            <span class="hero-tag">AI Workflows</span>
+            <span class="hero-tag">Enterprise Dashboards</span>
+            <span class="hero-tag">Design Systems</span>
+            <span class="hero-tag">UX Research</span>
+            <span class="hero-tag">Mobile (iOS & Android)</span>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#work" class="btn-primary">Explore 10 Projects →</a>
+            <a href="#contact" class="btn-secondary">Get in Touch</a>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-meta">SaaS & FinTech</div>
-          <h3>Data Visualization & Dashboards</h3>
-          <p>Transformed dense datasets into clean, actionable enterprise dashboards across SaaS, FinTech, and HRMS domains to enhance decision-making for leadership teams.</p>
-          <div class="tags">
-            <span class="tag">Information Architecture</span>
-            <span class="tag">Data Visualization</span>
-            <span class="tag">Figma</span>
+        <!-- Embedded Vector Graphic Hero Mockup -->
+        <div class="hero-visual-card">
+          <div class="hero-device-top">
+            <div class="hero-circle red"></div>
+            <div class="hero-circle yellow"></div>
+            <div class="hero-circle green"></div>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-meta">Mobile Apps</div>
-          <h3>Healthcare & Consumer Experience</h3>
-          <p>Designed user-centric mobile applications for Healthcare, Pregnancy Tracking, and Wellness with a focus on WCAG accessibility, intuitive onboarding, and retention.</p>
-          <div class="tags">
-            <span class="tag">iOS / Android</span>
-            <span class="tag">Accessibility (WCAG)</span>
-            <span class="tag">Usability Testing</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-meta">AI & Web Design</div>
-          <h3>Robotics & AI Brand Conversions</h3>
-          <p>Built responsive, high-converting websites for AI/Robotics brands (Simpel.ai, XP Robotics, Simi.ai) by restructuring visual hierarchy and conversion funnels.</p>
-          <div class="tags">
-            <span class="tag">Web Design</span>
-            <span class="tag">Visual Hierarchy</span>
-            <span class="tag">Brand Systems</span>
-          </div>
+          <svg viewBox="0 0 500 320" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="320" rx="12" fill="#0d1424"/>
+            <rect x="20" y="24" width="120" height="272" rx="8" fill="#141c30" stroke="#25324d"/>
+            <rect x="36" y="44" width="88" height="12" rx="4" fill="#6366f1" fill-opacity="0.3"/>
+            <rect x="36" y="68" width="60" height="8" rx="4" fill="#475569"/>
+            <rect x="36" y="86" width="75" height="8" rx="4" fill="#475569"/>
+            <rect x="36" y="104" width="50" height="8" rx="4" fill="#475569"/>
+            <rect x="156" y="24" width="324" height="160" rx="8" fill="#141c30" stroke="#25324d"/>
+            <path d="M176 130 C 220 80, 280 160, 340 70 C 390 120, 430 50, 460 65" stroke="#6366f1" stroke-width="3" fill="none"/>
+            <circle cx="340" cy="70" r="5" fill="#10b981"/>
+            <circle cx="460" cy="65" r="5" fill="#38bdf8"/>
+            <rect x="156" y="200" width="154" height="96" rx="8" fill="#141c30" stroke="#25324d"/>
+            <rect x="326" y="200" width="154" height="96" rx="8" fill="#141c30" stroke="#25324d"/>
+          </svg>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2>Skills & Core Competencies</h2>
-      <div class="skills-grid">
-        <div class="skill-block">
+  <!-- Work Showcase Grid -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Portfolio Gallery</span>
+        <h2 class="section-title">Selected Work (10 Case Studies)</h2>
+        <p class="section-subtitle">Click any project card to open the interactive Behance-style case study breakdown.</p>
+      </div>
+
+      <div class="work-filters">
+        <button class="filter-btn active" data-filter="all">All (10)</button>
+        <button class="filter-btn" data-filter="retail">Retail & Enterprise (3)</button>
+        <button class="filter-btn" data-filter="ai">AI & SaaS (3)</button>
+        <button class="filter-btn" data-filter="health">Health & Mobile (2)</button>
+        <button class="filter-btn" data-filter="social">Social Impact (2)</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- 01: LUX Ecosystem -->
+        <article class="project-card col-span-12" data-category="retail" onclick="openModal('lux-ecosystem')">
+          <div class="card-preview-window">
+            <svg viewBox="0 0 640 180" width="100%" height="auto" fill="none">
+              <rect x="20" y="20" width="380" height="140" rx="8" fill="#17223b" stroke="#334155"/>
+              <rect x="420" y="20" width="200" height="140" rx="16" fill="#1e293b" stroke="#6366f1"/>
+              <circle cx="460" cy="60" r="16" fill="#6366f1"/>
+              <rect x="490" y="52" width="100" height="16" rx="4" fill="#475569"/>
+              <path d="M50 110 Q 150 40 250 90 T 370 70" stroke="#38bdf8" stroke-width="3" fill="none"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-num">01 / FLAGSHIP</span>
+              <span class="card-pill">Retail · Enterprise · AI</span>
+            </div>
+            <h3 class="card-title">LUX Ecosystem <span>↗</span></h3>
+            <p class="card-desc">Connected retail ecosystem harmonizing scanner retail mobile apps, centralized CRM, and warehouse management (WMS).</p>
+            <div class="card-footer">
+              <span>Simpel.ai Enterprise</span>
+              <span>View Full Case Study →</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02: JGH Amul -->
+        <article class="project-card col-span-7" data-category="retail" onclick="openModal('jgh-amul')">
+          <div class="card-preview-window">
+            <svg viewBox="0 0 340 160" width="100%" height="auto" fill="none">
+              <rect width="340" height="160" rx="8" fill="#17223b"/>
+              <circle cx="70" cy="80" r="35" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="2"/>
+              <rect x="130" y="50" width="170" height="16" rx="4" fill="#cbd5e1"/>
+              <rect x="130" y="76" width="130" height="12" rx="4" fill="#64748b"/>
+              <rect x="130" y="98" width="90" height="12" rx="4" fill="#475569"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">02</span><span class="card-pill">Retail · Mobile CRM</span></div>
+            <h3 class="card-title">JGH Amul Retail <span>↗</span></h3>
+            <p class="card-desc">Mobile ordering system and CRM route management for high-velocity dairy retailers.</p>
+            <div class="card-footer"><span>Mobile & Desktop</span><span>Explore →</span></div>
+          </div>
+        </article>
+
+        <!-- 03: HRMS -->
+        <article class="project-card col-span-5" data-category="retail" onclick="openModal('hrms-app')">
+          <div class="card-preview-window">
+            <svg viewBox="0 0 240 160" width="100%" height="auto" fill="none">
+              <rect x="40" y="10" width="160" height="140" rx="14" fill="#17223b" stroke="#334155"/>
+              <rect x="60" y="30" width="120" height="30" rx="6" fill="#10b981" fill-opacity="0.3"/>
+              <rect x="60" y="70" width="120" height="14" rx="4" fill="#475569"/>
+              <rect x="60" y="92" width="80" height="14" rx="4" fill="#475569"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">03</span><span class="card-pill">Enterprise HRMS</span></div>
+            <h3 class="card-title">HRMS Mobile <span>↗</span></h3>
+            <p class="card-desc">Attendance check-ins, leave tracking dashboards, and automated employee payslips.</p>
+            <div class="card-footer"><span>Native App</span><span>Explore →</span></div>
+          </div>
+        </article>
+
+        <!-- 04: Simpel.ai -->
+        <article class="project-card col-span-6" data-category="ai" onclick="openModal('simpel-ai')">
+          <div class="card-preview-window">
+            <svg viewBox="0 0 300 150" width="100%" height="auto" fill="none">
+              <rect width="300" height="150" rx="8" fill="#111827"/>
+              <circle cx="150" cy="75" r="30" fill="#6366f1" fill-opacity="0.25"/>
+              <circle cx="150" cy="75" r="10" fill="#6366f1"/>
+              <line x1="60" y1="75" x2="120" y2="75" stroke="#6366f1" stroke-dasharray="4 4"/>
+              <line x1="180" y1="75" x2="240" y2="75" stroke="#6366f1" stroke-dasharray="4 4"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">04</span><span class="card-pill">AI · Platform</span></div>
+            <h3 class="card-title">Simpel.ai Website <span>↗</span></h3>
+            <p class="card-desc">Clean conversion funnel and landing pages for agentic AI enterprise software.</p>
+            <div class="card-footer"><span>Web SaaS</span><span>Explore →</span></div>
+          </div>
+        </article>
+
+        <!-- 05: XP Robotics -->
+        <article class="project-card col-span-6" data-category="ai" onclick="openModal('xp-robotics')">
+          <div class="card-preview-window">
+            <svg viewBox="0 0 300 150" width="100%" height="auto" fill="none">
+              <rect width="300" height="150" rx="8" fill="#0f172a"/>
+              <circle cx="150" cy="75" r="45" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <circle cx="150" cy="75" r="20" stroke="#06b6d4" stroke-width="2"/>
+              <circle cx="150" cy="75" r="5" fill="#06b6d4"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">05</span><span class="card-pill">Robotics · Hardware UI</span></div>
+            <h3 class="card-title">XP Robotics <span>↗</span></h3>
+            <p class="card-desc">LiDAR telemetry views and autonomous warehouse robot specifications portal.</p>
+            <div class="card-footer"><span>Web / Portal</span><span>Explore →</span></div>
+          </div>
+        </article>
+
+        <!-- 06: Simi.ai -->
+        <article class="project-card col-span-4" data-category="ai" onclick="openModal('simi-ai')">
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">06</span><span class="card-pill">AI Copilot</span></div>
+            <h3 class="card-title">Simi.ai <span>↗</span></h3>
+            <p class="card-desc">Interactive multi-turn AI canvas minimizing prompting friction.</p>
+            <div class="card-footer"><span>Web App</span><span>Explore →</span></div>
+          </div>
+        </article>
+
+        <!-- 07: Yoga App -->
+        <article class="project-card col-span-4" data-category="health" onclick="openModal('yoga-app')">
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">07</span><span class="card-pill">Wellness</span></div>
+            <h3 class="card-title">Mindful Yoga App <span>↗</span></h3>
+            <p class="card-desc">Tranquil mobile experience centered around Pranayama breathing routines.</p>
+            <div class="card-footer"><span>iOS / Android</span><span>Explore →</span></div>
+          </div>
+        </article>
+
+        <!-- 08: Pregnancy Tracker -->
+        <article class="project-card col-span-4" data-category="health" onclick="openModal('pregnancy-app')">
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">08</span><span class="card-pill">Health</span></div>
+            <h3 class="card-title">Pregnancy Tracker <span>↗</span></h3>
+            <p class="card-desc">Maternal health logs, vital trackers, and developmental milestones.</p>
+            <div class="card-footer"><span>iOS / Android</span><span>Explore →</span></div>
+          </div>
+        </article>
+
+        <!-- 09: Gaushaala Donor -->
+        <article class="project-card col-span-6" data-category="social" onclick="openModal('gaushaala-app')">
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">09</span><span class="card-pill">Non-Profit</span></div>
+            <h3 class="card-title">Gaushaala Donor App <span>↗</span></h3>
+            <p class="card-desc">Transparent donor allocation with live feed webcam verification.</p>
+            <div class="card-footer"><span>Mobile App</span><span>Explore →</span></div>
+          </div>
+        </article>
+
+        <!-- 10: Impactshaala -->
+        <article class="project-card col-span-6" data-category="social" onclick="openModal('impactshaala')">
+          <div class="card-body">
+            <div class="card-meta"><span class="card-num">10</span><span class="card-pill">Social Impact</span></div>
+            <h3 class="card-title">Impactshaala Hub <span>↗</span></h3>
+            <p class="card-desc">Transparent CSR fund disbursement and NGO grant tracking platform.</p>
+            <div class="card-footer"><span>Web Platform</span><span>Explore →</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUX Dedicated Deep Dive -->
+  <section class="section" id="lux" style="padding-top:0;">
+    <div class="container">
+      <div class="flagship-box">
+        <span class="flagship-badge">FLAGSHIP CASE STUDY</span>
+        <h2 style="font-size: 2.4rem; font-weight:800; margin-bottom: 12px;">LUX Retail Ecosystem</h2>
+        <p style="color: #94a3b8; font-size: 1.15rem; max-width: 800px;">
+          Unifying physical product barcode scanning, retailer stock replenishment, CRM analytics, and warehouse dispatch into one seamless interface architecture.
+        </p>
+
+        <div class="specs-row">
+          <div class="spec-item"><span class="spec-label">ROLE</span><span class="spec-val">Product Designer</span></div>
+          <div class="spec-item"><span class="spec-label">PLATFORMS</span><span class="spec-val">Web + Mobile</span></div>
+          <div class="spec-item"><span class="spec-label">VELOCITY</span><span class="spec-val">+35% Ideation via AI</span></div>
+          <div class="spec-item"><span class="spec-label">IMPACT</span><span class="spec-val">64% Faster Reorders</span></div>
+        </div>
+
+        <h4 style="margin-bottom: 10px; font-size: 1rem; color: #cbd5e1;">Touchpoints Delivered:</h4>
+        <div class="modules-cloud">
+          <span class="module-item">✓ Retailer Mobile App</span>
+          <span class="module-item">✓ Central Admin CRM</span>
+          <span class="module-item">✓ Warehouse WMS</span>
+          <span class="module-item">✓ QR Link Inventory Scanner</span>
+          <span class="module-item">✓ Merchant Credit Wallet</span>
+          <span class="module-item">✓ Real-Time Restock Telematics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Trajectory</span>
+        <h2 class="section-title">Work Experience</h2>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Simpel.ai</div>
+            <div class="exp-role">UI/UX Designer & Product Designer</div>
+          </div>
+          <div class="exp-time">May 2025 – Present | Bangalore, India</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Architected the multi-platform LUX Ecosystem (Retail App, CRM, and Warehouse Management System), cutting inventory turnaround time significantly.</li>
+          <li>Designed the JGH Amul retail mobile application and CRM experience to improve merchant visibility and order fulfillment.</li>
+          <li>Integrated Generative AI workflows (Google Stitch, Emergent, Figma Make, Microsoft Copilot), accelerating prototyping cycles by over 35%.</li>
+          <li>Awarded <strong>Employee of the Month</strong> for rapid design execution and cross-functional team delivery.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Bridge UX Studio</div>
+            <div class="exp-role">UI/UX Designer Intern</div>
+          </div>
+          <div class="exp-time">Sep 2024 – Dec 2024 | Bangalore, India</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Designed an AI-assisted Hospital Management System (HMS) covering doctor schedules, patient onboarding, and triage flows.</li>
+          <li>Conducted user research, usability testing, and wireframing for FinTech and B2B SaaS web applications.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toolkit Section -->
+  <section class="section" id="toolkit" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Competencies</span>
+        <h2 class="section-title">Design Toolkit & Systems</h2>
+      </div>
+
+      <div class="toolkit-grid">
+        <div class="toolkit-card">
           <h4>Product & UI Design</h4>
-          <div class="skill-pills">
-            <span class="skill-pill">Design Systems</span>
-            <span class="skill-pill">Component Libraries</span>
-            <span class="skill-pill">Mobile Design (iOS/Android)</span>
-            <span class="skill-pill">Responsive Web</span>
-            <span class="skill-pill">Interactive Prototyping</span>
+          <div class="pills-wrap">
+            <span class="toolkit-pill">Design Systems</span>
+            <span class="toolkit-pill">Component Libraries</span>
+            <span class="toolkit-pill">iOS / Android Mobile</span>
+            <span class="toolkit-pill">Responsive Web</span>
+            <span class="toolkit-pill">WCAG Accessibility</span>
           </div>
         </div>
-        <div class="skill-block">
-          <h4>UX Research & Strategy</h4>
-          <div class="skill-pills">
-            <span class="skill-pill">User Interviews</span>
-            <span class="skill-pill">Journey Mapping</span>
-            <span class="skill-pill">User Flows</span>
-            <span class="skill-pill">Information Architecture</span>
-            <span class="skill-pill">Usability Testing</span>
+
+        <div class="toolkit-card">
+          <h4>UX Research & Frameworks</h4>
+          <div class="pills-wrap">
+            <span class="toolkit-pill">User Interviews</span>
+            <span class="toolkit-pill">Information Architecture</span>
+            <span class="toolkit-pill">Journey Mapping</span>
+            <span class="toolkit-pill">User Flows</span>
+            <span class="toolkit-pill">Usability Testing</span>
           </div>
         </div>
-        <div class="skill-block">
-          <h4>AI-Driven Workflows</h4>
-          <div class="skill-pills">
-            <span class="skill-pill">Google Stitch</span>
-            <span class="skill-pill">Emergent</span>
-            <span class="skill-pill">Figma Make</span>
-            <span class="skill-pill">Microsoft Copilot</span>
-            <span class="skill-pill">Rapid Concepting</span>
+
+        <div class="toolkit-card">
+          <h4>AI-Assisted Workflows</h4>
+          <div class="pills-wrap">
+            <span class="toolkit-pill">Google Stitch</span>
+            <span class="toolkit-pill">Emergent</span>
+            <span class="toolkit-pill">Figma Make</span>
+            <span class="toolkit-pill">Microsoft Copilot</span>
+            <span class="toolkit-pill">Rapid Concepting</span>
           </div>
         </div>
-        <div class="skill-block">
-          <h4>Tools & Technologies</h4>
-          <div class="skill-pills">
-            <span class="skill-pill">Figma</span>
-            <span class="skill-pill">FigJam</span>
-            <span class="skill-pill">Miro</span>
-            <span class="skill-pill">Adobe XD</span>
-            <span class="skill-pill">Framer</span>
-            <span class="skill-pill">Axure RP</span>
+
+        <div class="toolkit-card">
+          <h4>Software & Tools</h4>
+          <div class="pills-wrap">
+            <span class="toolkit-pill">Figma</span>
+            <span class="toolkit-pill">FigJam</span>
+            <span class="toolkit-pill">Miro</span>
+            <span class="toolkit-pill">Adobe XD</span>
+            <span class="toolkit-pill">Framer</span>
+            <span class="toolkit-pill">Axure RP</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="contact-card">
-      <h2>Let's connect</h2>
-      <p>Bangalore, India · Available for full-time Product and UI/UX Design opportunities.</p>
-      <a href="mailto:juliesky94@gmail.com" class="btn">Get in Touch</a>
-    </section>
+  <!-- Contact -->
+  <section class="section" id="contact" style="padding-top:0;">
+    <div class="container">
+      <div class="flagship-box" style="text-align: center; padding: 60px 20px;">
+        <span class="flagship-badge">LET'S CONNECT</span>
+        <h2 style="font-size: 2.4rem; font-weight:800; margin-bottom: 12px;">Have a design challenge?</h2>
+        <p style="color: #94a3b8; font-size: 1.15rem; max-width: 600px; margin: 0 auto 30px;">
+          Available for Product Designer and UI/UX roles in Bangalore, India & remote teams worldwide.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="mailto:juliesky94@gmail.com" class="btn-primary" style="padding: 12px 28px;">juliesky94@gmail.com ✉️</a>
+          <a href="https://linkedin.com/in/juli-kumari-a64648172" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+          <a href="https://behance.net/julikumari24" target="_blank" class="btn-secondary">Behance ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Juli Kumari — Product Designer | Built with intention & deployed on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <!-- Modal Case Study Viewer -->
+  <div class="modal-overlay" id="caseModal">
+    <div class="modal-dialog">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent"></div>
+    </div>
   </div>
+
+  <!-- Resume Modal -->
+  <div class="modal-overlay" id="resumeModal">
+    <div class="modal-dialog">
+      <button class="modal-close" id="closeResumeBtn">✕</button>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h3 style="font-size:1.4rem;">Juli Kumari — Resume</h3>
+        <button onclick="window.print()" class="btn-primary" style="font-size:0.8rem; padding:6px 14px;">Print / PDF</button>
+      </div>
+      <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+        <p style="margin-bottom: 14px;"><strong>Bangalore, India</strong> | +91 7483026969 | juliesky94@gmail.com</p>
+        <hr style="border:none; border-top: 1px solid var(--border-light); margin-bottom: 20px;" />
+        <h4 style="color:#fff; margin-bottom:6px;">Summary</h4>
+        <p style="margin-bottom: 18px;">Product Designer with 2 years of experience designing AI-driven web and mobile products across FinTech, Healthcare, SaaS, Retail, and HRMS.</p>
+        <h4 style="color:#fff; margin-bottom:6px;">Experience</h4>
+        <p><strong>Simpel.ai</strong> — UI/UX Designer (May 2025 – Present)</p>
+        <p style="margin-bottom: 18px;"><strong>Bridge UX Studio</strong> — UI/UX Designer Intern (Sep 2024 – Dec 2024)</p>
+        <h4 style="color:#fff; margin-bottom:6px;">Certifications</h4>
+        <p>Advanced UX Training (Web & Mobile) — Bridge UX Design Studios</p>
+        <p>User Experience Design Essentials — Adobe XD Certified</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    const CASE_STUDIES = {
+      'lux-ecosystem': {
+        title: 'LUX Ecosystem Architecture',
+        category: 'Retail · Enterprise · Logistics',
+        challenge: 'Retail operations involved fragmented workflows between barcode scanning, slow B2B reordering, and asynchronous warehouse dispatch.',
+        approach: 'Designed a unified design system that operates identically whether holding a mobile scanner in a warehouse or reviewing CRM analytics on desktop.',
+        impact: 'Cut retailer stock reordering duration by 64% and synchronized over 1,400 storefronts.'
+      },
+      'jgh-amul': {
+        title: 'JGH Amul Retail Ecosystem',
+        category: 'Mobile CRM · Supply Chain',
+        challenge: 'Distributors relied on handwritten paper logs to specify perishable milk crate quotas, causing stockouts during peak early mornings.',
+        approach: 'Designed a one-handed mobile order entry experience with strict cutoff timers, coupled with delivery van telematics tracking.',
+        impact: 'Cut indent transcription errors by 98% and improved punctuality across 1,280 retail outlets.'
+      },
+      'hrms-app': {
+        title: 'Human Resource Management App',
+        category: 'Enterprise SaaS · HRMS',
+        challenge: 'Enterprise HR software was clunky, requiring desktop logins for daily attendance punches, leave balances, and tax forms.',
+        approach: 'Crafted a consumer-grade mobile experience with 1-tap geofenced shift check-ins and visual leave quotas.',
+        impact: 'Daily mobile active usage rose from 32% to 94% across client teams.'
+      },
+      'simpel-ai': {
+        title: 'Simpel.ai Enterprise Website',
+        category: 'AI Platform · Conversion',
+        challenge: 'Explaining complex micro-agent neural networks without alienating non-technical enterprise buyers.',
+        approach: 'Designed an interactive pipeline node diagram in the hero section displaying live automated ROI calculations.',
+        impact: 'Increased enterprise demo request bookings by 54% within 6 weeks.'
+      },
+      'xp-robotics': {
+        title: 'XP Robotics Digital Experience',
+        category: 'Industrial Robotics · Telemetry',
+        challenge: 'Warehouse robotics often feel cold and mechanical. Needed a portal balancing hardware specs with autonomous software.',
+        approach: 'Built an interactive LiDAR 3D SLAM radar preview and autonomous mobile robot (AMR) hardware comparison matrix.',
+        impact: 'Elevated brand credibility among enterprise supply chain investors.'
+      },
+      'simi-ai': {
+        title: 'Simi.ai Copilot Experience',
+        category: 'AI SaaS · Product Design',
+        challenge: 'Users suffered from blank prompt anxiety and confusing model latency.',
+        approach: 'Structured context-aware prompt scaffolds, real-time code diffs, and transparent token dials.',
+        impact: 'Reduced prompt abandonment by 42%.'
+      },
+      'yoga-app': {
+        title: 'Mindful Yoga & Breathwork',
+        category: 'Health & Wellness',
+        challenge: 'Fitness apps overload beginners with intimidating gym metrics and harsh alarm reminders.',
+        approach: 'Designed an ethereal, tranquil UI with tactile circular breath timers and gentle daily habits.',
+        impact: 'Attained a 68% 30-day user retention rate.'
+      },
+      'pregnancy-app': {
+        title: 'Pregnancy Tracking & Maternal Care',
+        category: 'Healthcare Mobile',
+        challenge: 'Expectant mothers face anxiety from medical jargon and unverified forum advice.',
+        approach: 'Empathetic visual milestone tracking comparing developmental baby sizes with gentle vital logging.',
+        impact: 'Ranked #1 for emotional reassurance in maternal beta user trials.'
+      },
+      'gaushaala-app': {
+        title: 'Gaushaala Community Donor App',
+        category: 'Social Impact · Non-Profit',
+        challenge: 'Opaque donation channels resulted in high drop-offs due to lack of verifiable proof of feed.',
+        approach: 'Introduced transparent feed allocation cards, live webcam stall feeds, and automated tax receipts.',
+        impact: 'Boosted recurring monthly sponsorships by 3.2x.'
+      },
+      'impactshaala': {
+        title: 'Impactshaala CSR Grant Hub',
+        category: 'Web App · CSR Philanthropy',
+        challenge: 'Corporate donors struggled to track whether deployed NGO grant funds reached target schools.',
+        approach: 'Created verifiable milestone audit pipelines with direct field photo verification.',
+        impact: 'Facilitated the seamless deployment of ₹1.84+ Crores to verified grassroots NGOs.'
+      }
+    };
+
+    function openModal(id) {
+      const data = CASE_STUDIES[id];
+      if (!data) return;
+      document.getElementById('modalContent').innerHTML = `
+        <span class="card-pill">${data.category}</span>
+        <h2 style="font-size: 2rem; margin: 12px 0;">${data.title}</h2>
+        <div style="margin-bottom: 20px;">
+          <h4 style="color:#fff; margin-bottom: 6px;">The Problem</h4>
+          <p style="color:var(--text-muted); line-height: 1.6;">${data.challenge}</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <h4 style="color:#fff; margin-bottom: 6px;">UX Approach</h4>
+          <p style="color:var(--text-muted); line-height: 1.6;">${data.approach}</p>
+        </div>
+        <div>
+          <h4 style="color:#10b981; margin-bottom: 6px;">Measurable Outcome</h4>
+          <p style="color:#fff; font-weight:600;">${data.impact}</p>
+        </div>
+      `;
+      document.getElementById('caseModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('caseModal').classList.remove('active');
+    }
+
+    document.getElementById('caseModal').addEventListener('click', (e) => {
+      if (e.target.id === 'caseModal') closeModal();
+    });
+
+    // Resume Modal
+    const resumeModal = document.getElementById('resumeModal');
+    document.getElementById('openResumeBtn').addEventListener('click', () => resumeModal.classList.add('active'));
+    document.getElementById('closeResumeBtn').addEventListener('click', () => resumeModal.classList.remove('active'));
+    resumeModal.addEventListener('click', (e) => { if (e.target === resumeModal) resumeModal.classList.remove('active'); });
+
+    // Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
